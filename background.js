@@ -79,7 +79,7 @@ function defFunc() {
 
     } 
 
-    console.log(defInfo);
+    //console.log(defInfo);
 
   })
   .catch(error => console.error('Valid Word Not Highlighted.')); 
