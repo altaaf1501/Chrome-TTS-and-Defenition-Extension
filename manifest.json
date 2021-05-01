@@ -5,8 +5,7 @@
 
   "permissions": [
     "tabs",
-    "https://*/*",
-    "http://*/*", 
+    "https://*/*", 
     "storage", 
     "activeTab", 
     "scripting"
