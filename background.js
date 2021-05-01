@@ -1,14 +1,25 @@
-let color = '#3aa757';
+//chrome.addEventListener("select", selection);
 
+function selection() {
+  var selectedText = '';  
+  // window.getSelection
+  if (window.getSelection) {
+      selectedText = window.getSelection();
+  }
+  // document.getSelection
+  else if (document.getSelection) {
+      selectedText = document.getSelection();
+  }
+  // document.selection
+  else if (document.selection) {
+      selectedText = 
+      document.selection.createRange().text;
+  } else return;
+  // To write the selected text into the textarea
+  document.testform.selectedtext.value = selectedText;
 
-/**
-* Check if runtime.onInsatalled is called
-*/
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.storage.sync.set({ color });
-  console.log('Default background color set to %cgreen', `color: ${color}`);
-});
-
+  console.log(selectedText)
+}
 
 
 /**

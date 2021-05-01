@@ -1,9 +1,8 @@
+console.log("Script loaded.");
 
+document.addEventListener("mouseup", select);
 
-chrome.extension.onMessage.addListener(function(request, sender, sendResponse){
-    if (request.method == 'getSelection') {
-        sendResponse({data: window.getSelection().toString()});
-    } else {
-        sendResponse({});
-    }
-})
+function select(event){
+    const txt = window.getSelection().toString();
+    console.log(txt)
+}
