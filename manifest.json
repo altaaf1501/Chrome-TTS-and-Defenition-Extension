@@ -6,7 +6,10 @@
   "permissions": [
     "tabs",
     "https://*/*",
-    "http://*/*"
+    "http://*/*", 
+    "storage", 
+    "activeTab", 
+    "scripting"
   ],
   "action": {
     "default_icon": {
@@ -27,9 +30,21 @@
   },
 
   "background": {
-    "scripts": [
-      "background.js"
-    ]
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "tts_Function": {
+        "suggested_key": {
+            "default": "Ctrl+Shift+1"    
+        },
+        "description": "Starts the TTS voice over."
+    },
+    "definition_Check": {
+        "suggested_key": {
+            "default": "Ctrl+Shift+2"
+        },
+        "description": "Displays the defenition of the highlighted word."
+    }
   },
   "content_scripts": [
     {
