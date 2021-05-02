@@ -1,25 +1,3 @@
-//chrome.addEventListener("select", selection);
-
-function selection() {
-  var selectedText = '';  
-  // window.getSelection
-  if (window.getSelection) {
-      selectedText = window.getSelection();
-  }
-  // document.getSelection
-  else if (document.getSelection) {
-      selectedText = document.getSelection();
-  }
-  // document.selection
-  else if (document.selection) {
-      selectedText = 
-      document.selection.createRange().text;
-  } else return;
-  // To write the selected text into the textarea
-  document.testform.selectedtext.value = selectedText;
-
-  console.log(selectedText)
-}
 
 
 /**
@@ -53,6 +31,7 @@ function ttsFunc() {
 
 
 
+
 /**
 * word definition Function Code
 */
@@ -60,7 +39,7 @@ function defFunc() {
   
   console.log("Running Definition Function.");
   
-  const selectedWord = "Hello";
+  const selectedWord = text;
 
   fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${selectedWord}?key=87df3d18-6eb6-43d0-a9b0-0215a6894e19`)
   .then(response => response.json())
@@ -96,3 +75,14 @@ function defFunc() {
   .catch(error => console.error('Valid Word Not Highlighted.')); 
 
 }
+
+
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    console.log("Event recieved in background");
+    text = request.txt;
+    defFunc();
+    chrome.tts.speak(txt);
+    sendResponse({success: true});
+  }
+)

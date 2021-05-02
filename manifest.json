@@ -7,7 +7,8 @@
     "tabs",
     "storage", 
     "activeTab", 
-    "scripting"
+    "scripting",
+    "tts"
   ],
   "host_permissions": [
     "*://*/*"
