@@ -19,27 +19,6 @@ chrome.commands.onCommand.addListener(function(command) {
 
 
 
-/**
-* tts Function Code
-*/
-function ttsFunc(text, callback) {
-
-  //  chrome.tts.speak(text);
-
-  //  var speakListener = function(utterance, options, sendTtsEvent) {
-  //    sendTtsEvent({type: 'start', charIndex: 0})
-  
-  //    sendTtsEvent({type: 'end', charIndex: text.length})
-  //  };
-  
-  //  const stopListener = () => {
-  //   // (stop all speech)
-  //  };
-  
-  //  chrome.ttsEngine.onSpeak.addListener(speakListener);
-  //  chrome.ttsEngine.onStop.addListener(stopListener);
-
-}
 
 
 
@@ -51,6 +30,13 @@ function defFunc() {
   console.log("Running Dictionary Function.");
   
   const selectedWord = text;
+
+  chrome.tts.speak(text);
+
+  
+
+
+  
 
   fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${selectedWord}?key=87df3d18-6eb6-43d0-a9b0-0215a6894e19`)
   .then(response => response.json())
@@ -110,6 +96,7 @@ function synFunc() {
       //Count
       console.log("Type " + i + ":");
 
+      console.log(defInfo);
 
       //Synonyms
       if (synl >= 1) {  
@@ -194,15 +181,25 @@ chrome.contextMenus.create({
 chrome.contextMenus.onClicked.addListener(function(clickData, tab) {
   console.log(clickData);
   console.log(tab);
+  document.getElementById("selectedtext").innerHTML = "yo";
+  console.log("DOOOOOOOMED");
+  chrome.windows.create({
+    url: chrome.extension.getURL('HTML/Definition.html'),
+    type: "popup",
+    height: 400,
+    width: 400
+  })
+
 })
 
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-
     console.log("Event recieved in background");    
     text = request.txt;
     chrome.tts.speak(text)
     sendResponse({success: true});
+    
+
   }
 )
