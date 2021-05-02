@@ -1,9 +1,10 @@
-console.log("Script loaded.");
 
+console.log("Script loaded.");
 
 document.addEventListener("mouseup", select);
 
 function select(event){
+
     const txt = window.getSelection().toString();
     console.log(txt)  
     chrome.runtime.sendMessage({txt}, function(response) {
@@ -13,6 +14,7 @@ function select(event){
     if (txt === null) {
         return null;
     }
+    
     return txt;
 
 }

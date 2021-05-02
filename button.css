@@ -1,23 +1,15 @@
-/* button {
-  height: 50px;
-  width: 100px;
-  outline: none;
-  margin: 3px;
-  border: none;
-  border-radius: 2px;
-} */
 
 button {
   display: inline-block;
   padding: 0.35em 1.2em;
-  border:0.1em solid #FFFFFF;
+  border:0.1em solid #000000;
   margin:0 0.3em 0.3em 0;
   border-radius:0.12em;
   box-sizing: border-box;
   text-decoration:none;
   font-family:'Roboto',sans-serif;
   font-weight:300;
-  color:#FFFFFF;
+  background-color: #b2d3c2;
   text-align:center;
   transition: all 0.2s;
 }
@@ -25,24 +17,26 @@ button {
 button:hover{
   color:#000000;
   background-color:#FFFFFF;
+  border: solid darkgreen;
+  border-width: 0.2em;
+  cursor: pointer;
 }
-
-
-/* button.current {
-  box-shadow: 0 0 0 2px white,
-              0 0 0 4px black;
-} */
 
 body {
   height: 180px;
   width: 250px;
-
+  background-color: gainsboro;
   margin: 3px; /* Space from this element (entire page) and others*/
   padding: 3px; /*space from content and border*/
   border: solid darkgreen;
   border-width: thick;
   overflow:hidden;
   display:block;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 div {

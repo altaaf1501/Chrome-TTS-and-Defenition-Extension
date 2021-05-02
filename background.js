@@ -1,12 +1,10 @@
-
-
 /**
 * Check if command is called
 */
 chrome.commands.onCommand.addListener(function(command) {
   switch (command) {
       case 'tts_Function':
-          ttsFunc();
+          ttsFunc(text);
           break;
       case 'definition_Check':
           defFunc();
@@ -24,24 +22,24 @@ chrome.commands.onCommand.addListener(function(command) {
 /**
 * tts Function Code
 */
-function ttsFunc() {
+function ttsFunc(text, callback) {
 
-  // chrome.tts.speak(text);
+  //  chrome.tts.speak(text);
 
-  // var speakListener = function(utterance, options, sendTtsEvent) {
-  //   sendTtsEvent({type: 'start', charIndex: 0})
+  //  var speakListener = function(utterance, options, sendTtsEvent) {
+  //    sendTtsEvent({type: 'start', charIndex: 0})
   
-  //   sendTtsEvent({type: 'end', charIndex: text.length})
-  // };
+  //    sendTtsEvent({type: 'end', charIndex: text.length})
+  //  };
   
-  // const stopListener = () => {
+  //  const stopListener = () => {
   //   // (stop all speech)
-  // };
+  //  };
   
-  // chrome.ttsEngine.onSpeak.addListener(speakListener);
-  // chrome.ttsEngine.onStop.addListener(stopListener);
-}
+  //  chrome.ttsEngine.onSpeak.addListener(speakListener);
+  //  chrome.ttsEngine.onStop.addListener(stopListener);
 
+}
 
 
 
@@ -160,8 +158,6 @@ function synFunc() {
         console.log(`     There are no antonyms for ${selectedWord}.`)
       }
 
-      
-
       //Related Words
       let rel2l = [];
 
@@ -195,8 +191,6 @@ chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     console.log("Event recieved in background");
     text = request.txt;
-    //defFunc();
-    //chrome.tts.speak(text);
     sendResponse({success: true});
   }
 )
