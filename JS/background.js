@@ -185,10 +185,24 @@ function synFunc() {
 
 
 
+chrome.contextMenus.create({
+  "id": "Some id",
+  "title": "Context Menu",
+  "contexts": ["selection"]
+})
+
+chrome.contextMenus.onClicked.addListener(function(clickData, tab) {
+  console.log(clickData);
+  console.log(tab);
+})
+
+
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    console.log("Event recieved in background");
+
+    console.log("Event recieved in background");    
     text = request.txt;
+    chrome.tts.speak(text)
     sendResponse({success: true});
   }
 )
