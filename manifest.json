@@ -1,29 +1,24 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 2,
   "name": "Arjen translator big brain",
   "version": "1.0",
-
+  "background": {
+    "scripts": ["JS/background.js"]
+  },  
+  "content_scripts": [
+  {
+    "matches": ["*://*/*"],
+    "js": ["JS/content_script.js"]
+  } ],
+  
   "permissions": [
     "tabs",
     "storage", 
     "activeTab", 
-    "scripting",
     "tts",
-    "ttsEngine"
-  ],
-  "host_permissions": [
+    "ttsEngine",    
     "*://*/*"
   ],
-  "action": {
-    "default_icon": {
-      "16": "images/icon16.png",
-      "32": "images/icon32.png",
-      "48": "images/icon64.png",
-      "128": "images/icon128.png"
-    },
-    "default_title": "Translator",
-    "default_popup": "HTML/popup.html"    
-  },
   "description": "Yo",
   "icons": {
       "16": "images/icon16.png",
@@ -45,9 +40,6 @@
       }
     ]
   },
-  "background": {
-    "service_worker": "JS/background.js"
-  },
   "commands": {
     "tts_Function": {
         "suggested_key": {
@@ -67,11 +59,5 @@
       },
       "description": "Displays the Synonyms of the highlighted word."
   }
-  },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>", "*://*/*"],
-      "js": ["JS/content_script.js"]
-    }
-  ]
+  }
 }
