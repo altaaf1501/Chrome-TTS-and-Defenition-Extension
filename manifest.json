@@ -22,7 +22,7 @@
       "128": "images/icon128.png"
     },
     "default_title": "Translator",
-    "default_popup": "popup.html"    
+    "default_popup": "HTML/popup.html"    
   },
   "description": "Yo",
   "icons": {
@@ -46,7 +46,7 @@
     ]
   },
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "JS/background.js"
   },
   "commands": {
     "tts_Function": {
@@ -71,7 +71,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>", "*://*/*"],
-      "js": ["content_script.js"]
+      "js": ["JS/content_script.js"]
     }
   ]
 }
