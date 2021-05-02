@@ -8,7 +8,8 @@
     "storage", 
     "activeTab", 
     "scripting",
-    "tts"
+    "tts",
+    "ttsEngine"
   ],
   "host_permissions": [
     "*://*/*"
@@ -30,7 +31,20 @@
       "48": "images/icon64.png",
       "128": "images/icon128.png"
   },
-
+  "tts_engine": {
+    "voices": [
+      {
+        "voice_name": "Alice",
+        "lang": "en-US",
+        "event_types": ["start", "marker", "end"]
+      },
+      {
+        "voice_name": "Pat",
+        "lang": "en-US",
+        "event_types": ["end"]
+      }
+    ]
+  },
   "background": {
     "service_worker": "background.js"
   },
@@ -46,7 +60,13 @@
             "default": "Ctrl+Shift+2"
         },
         "description": "Displays the defenition of the highlighted word."
-    }
+    },
+    "synonym_Check": {
+      "suggested_key": {
+          "default": "Ctrl+Shift+3"
+      },
+      "description": "Displays the Synonyms of the highlighted word."
+  }
   },
   "content_scripts": [
     {
@@ -55,5 +75,5 @@
     }
   ]
 
-
+  
 }
