@@ -41,6 +41,16 @@ function defFunc() {
 
   chrome.tts.speak(text);
 
+  chrome.windows.create({
+        url: chrome.extension.getURL('HTML/dialog.html'),
+        type: "popup",
+        height: 400,
+        width: 400
+  });
+
+
+  
+
   fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${selectedWord}?key=87df3d18-6eb6-43d0-a9b0-0215a6894e19`)
   .then(response => response.json())
   .then(defInfo => {
